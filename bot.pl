@@ -193,7 +193,7 @@ sub follow_and_remove
     my $friends   = $twit->friends_ids;
     my $followers = $twit->followers_ids;
 
-    my %ids = map +{ $_ => 1 }, @{ $friends->{ids} }; # 差分を抽出
+    my %ids = map +( $_ => 1 ), @{ $friends->{ids} }; # 差分を抽出
 
     for my $id (@{ $followers->{ids} })
     {
