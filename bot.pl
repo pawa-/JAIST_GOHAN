@@ -68,6 +68,7 @@ EOS
 }
 
 warn 'フィードのチェックに失敗しました' if check_feed() == -1;
+follow_and_remove(); # 自動相互フォロー
 
 exit;
 
@@ -138,9 +139,9 @@ sub check_feed
         my $feed = XML::FeedPP->new($cache);
         my $item = $feed->get_item($FIRST_ITEM_NUM); # 短時間（１日以内）に複数回更新されない想定なのに注意
 
-        my $title =  decode_utf8 $item->title;
-        my $desc  =  decode_utf8 $item->description;
-        my $link  =  decode_utf8 $item->link;
+        my $title = decode_utf8 $item->title;
+        my $desc  = decode_utf8 $item->description;
+        my $link  = decode_utf8 $item->link;
 
         if ($desc =~ /(http:[^\s]+\.pdf)/)
         {
@@ -184,4 +185,30 @@ sub shorten_URL
     my $shortURL = $res->{data}{url};
 
     return $shortURL;
+}
+
+
+sub follow_and_remove
+{
+    my $friends   = $twit->friends_ids;
+    my $followers = $twit->followers_ids;
+
+    my %ids = map +{ $_ => 1 }, @{ $friends->{ids} }; # 差分を抽出
+
+    for my $id (@{ $followers->{ids} })
+    {
+        my $result = delete $ids{$id};
+
+        # 未フォローユーザをフォロー
+        unless (defined $result)
+        {
+            eval { $twit->create_friend({ user_id => $id }) };
+        }
+    }
+
+    # 残りはリムーブすべきユーザ
+    for my $id (keys %ids)
+    {
+        eval { $twit->destroy_friend({ user_id => $id }) };
+    }
 }
