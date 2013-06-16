@@ -5,15 +5,22 @@ use warnings;
 use utf8;
 use feature qw/say/;
 #use Smart::Comments;
+#use Data::Printer;
 use Net::Twitter::Lite::WithAPIv1_1;
 use Config::Pit;
 use Time::Piece;
 use IO::All -utf8;
+use Digest::MD5 qw/md5_hex/;
+use LWP::Simple qw/mirror/;
+use XML::FeedPP;
 use open qw/:utf8 :std/;
 
 
-my $MENU_FOLDER   = './menu/';
-my $HANKAKU_SPACE = q{ };
+my $MENU_DIR       = './menu/';
+my $CACHE_DIR      = './cache/';
+my $HANKAKU_SPACE  = q{ };
+my $FEED_URL       = 'http://www.jaist.ac.jp/cafe/feed/';
+my $FIRST_ITEM_NUM = 0;
 
 my $config = pit_get('JAIST_GOHAN', require => {
     'consumer_key'        => 'Input consumer_key',
@@ -36,7 +43,9 @@ my $twit = Net::Twitter::Lite::WithAPIv1_1->new(
 my ($mday, $wday, $lunchA, $lunchB, $lunchC, $dinnerA, $dinnerB, $higawari_men, $original_plate)
     = fetch_menu();
 
-my $menu = <<"EOS";
+if ($mday != -1)
+{
+    my $menu = <<"EOS";
 ${mday}日（${wday}）のメニュー▼
 　ランチＡ：$lunchA
 　ランチＢ：$lunchB
@@ -47,7 +56,10 @@ ${mday}日（${wday}）のメニュー▼
 オリジナル：$original_plate
 EOS
 
-$twit->update($menu);
+    $twit->update($menu);
+}
+
+warn 'フィードのチェックに失敗しました' if check_feed() == -1;
 
 exit;
 
@@ -61,12 +73,12 @@ sub fetch_menu
     my ($year, $month) = ( $t->year, $t->strftime("%m") );
 
     # ↓は本番ではコメントアウト
-    $month = '05';
+    #$month = '05';
     ### $year
     ### $month
 
-    my $menu_file = "${MENU_FOLDER}${year}/${month}.txt";
-    exit unless -f $menu_file;
+    my $menu_file = "${MENU_DIR}${year}/${month}.txt";
+    return -1 unless -f $menu_file;
 
     my $content = io($menu_file)->slurp;
     $content =~ s/\n\n+/\n/g;
@@ -94,5 +106,38 @@ sub fetch_menu
         {
             return ($mday, $wday, $lunchA, $lunchB, $lunchC, $dinnerA, $dinnerB, $higawari_men, $original_plate);
         }
+    }
+}
+
+
+sub check_feed
+{
+    my $cache = "${CACHE_DIR}feed.xml";
+
+    my $cache_last_update = (stat($cache))[9];
+
+    # もし新しければ上書きされる
+    LWP::Simple::mirror($FEED_URL, $cache) or return -1;
+
+    my $feed_last_update = (stat($cache))[9];
+
+    ### $cache_last_update
+    ### $feed_last_update
+
+    if ($feed_last_update > $cache_last_update)
+    {
+        # フィードが更新されている
+        my $feed = XML::FeedPP->new($cache);
+        my $item = $feed->get_item($FIRST_ITEM_NUM); # 短時間（１日以内）に複数回更新されない想定なのに注意
+
+        my $title =  $item->title;
+        my $desc  =  $item->description;
+        my $link  =  $item->link;
+
+        my $feed_info = <<"EOS";
+【JAIST Cafeteria】「${title}」${desc} $link
+EOS
+
+        $twit->update($feed_info);
     }
 }
