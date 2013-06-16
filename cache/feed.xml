@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>JAIST Cafeteria</title>
+	<atom:link href="http://www.jaist.ac.jp/cafe/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.jaist.ac.jp/cafe</link>
+	<description></description>
+	<lastBuildDate>Tue, 30 Apr 2013 02:51:14 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.2</generator>
+		<item>
+		<title>５月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2013/04/30/?p=1086/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2013/04/30/?p=1086/#comments</comments>
+		<pubDate>Tue, 30 Apr 2013 02:51:14 +0000</pubDate>
+		<dc:creator>cafe</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1086</guid>
+		<description><![CDATA[５月のメニュー★ http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/04/２５．５メニュー掲示用.pdf]]></description>
+			<content:encoded><![CDATA[<p>５月のメニュー★</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/04/２５．５メニュー掲示用.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/04/２５．５メニュー掲示用.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2013/04/30/?p=1086/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>4月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2013/03/26/?p=1059/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2013/03/26/?p=1059/#comments</comments>
+		<pubDate>Tue, 26 Mar 2013 00:34:03 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1059</guid>
+		<description><![CDATA[４月のメニューです！！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/03/２５．４メニュー掲示用.pdf]]></description>
+			<content:encoded><![CDATA[<p>４月のメニューです！！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/03/２５．４メニュー掲示用.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/03/２５．４メニュー掲示用.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2013/03/26/?p=1059/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>3月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2013/02/27/?p=1054/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2013/02/27/?p=1054/#comments</comments>
+		<pubDate>Wed, 27 Feb 2013 04:26:50 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1054</guid>
+		<description><![CDATA[3月のメニューを掲載しました！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/02/3月のメニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>3月のメニューを掲載しました！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/02/3月のメニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/02/3月のメニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2013/02/27/?p=1054/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>2月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2013/02/01/?p=1051/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2013/02/01/?p=1051/#comments</comments>
+		<pubDate>Fri, 01 Feb 2013 02:18:48 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1051</guid>
+		<description><![CDATA[2月のメニューを掲載しました！！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/02/2月メニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>2月のメニューを掲載しました！！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/02/2月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/02/2月メニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2013/02/01/?p=1051/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title></title>
+		<link>http://www.jaist.ac.jp/cafe/2012/12/31/?p=1047/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2012/12/31/?p=1047/#comments</comments>
+		<pubDate>Sun, 30 Dec 2012 19:57:09 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1047</guid>
+		<description><![CDATA[1月のメニューを掲載しました！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/12/1月のメニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>1月のメニューを掲載しました！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/12/1月のメニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/12/1月のメニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/12/31/?p=1047/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>12月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2012/12/02/?p=1043/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2012/12/02/?p=1043/#comments</comments>
+		<pubDate>Sun, 02 Dec 2012 03:11:09 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1043</guid>
+		<description><![CDATA[12月のメニューを掲載しました http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/12/12月メニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>12月のメニューを掲載しました</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/12/12月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/12/12月メニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/12/02/?p=1043/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>11月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2012/11/01/?p=1038/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2012/11/01/?p=1038/#comments</comments>
+		<pubDate>Thu, 01 Nov 2012 01:15:29 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1038</guid>
+		<description><![CDATA[11月のメニューを掲載しました！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/11/11月メニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>11月のメニューを掲載しました！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/11/11月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/11/11月メニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/11/01/?p=1038/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title></title>
+		<link>http://www.jaist.ac.jp/cafe/2012/10/02/?p=1032/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2012/10/02/?p=1032/#comments</comments>
+		<pubDate>Tue, 02 Oct 2012 01:05:32 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1032</guid>
+		<description><![CDATA[10月のメニューを掲載しました！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/10/10月メニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>10月のメニューを掲載しました！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/10/10月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/10/10月メニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/10/02/?p=1032/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>9月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2012/08/27/?p=1026/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2012/08/27/?p=1026/#comments</comments>
+		<pubDate>Mon, 27 Aug 2012 07:26:36 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1026</guid>
+		<description><![CDATA[９月のメニューを掲載しました！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/08/9月メニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>９月のメニューを掲載しました！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/08/9月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/08/9月メニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/08/27/?p=1026/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title></title>
+		<link>http://www.jaist.ac.jp/cafe/2012/07/30/?p=1020/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2012/07/30/?p=1020/#comments</comments>
+		<pubDate>Mon, 30 Jul 2012 00:25:01 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1020</guid>
+		<description><![CDATA[8月のメニューを掲載しました。 http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/07/8月メニュー.pdf]]></description>
+			<content:encoded><![CDATA[<p>8月のメニューを掲載しました。</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/07/8月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/07/8月メニュー.pdf</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/07/30/?p=1020/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
