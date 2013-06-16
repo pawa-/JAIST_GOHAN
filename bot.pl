@@ -13,14 +13,17 @@ use IO::All -utf8;
 use Digest::MD5 qw/md5_hex/;
 use LWP::Simple qw/mirror/;
 use XML::FeedPP;
+use Text::Truncate;
+use Encode qw/decode_utf8 encode_utf8/;
 use open qw/:utf8 :std/;
 
 
-my $MENU_DIR       = './menu/';
-my $CACHE_DIR      = './cache/';
-my $HANKAKU_SPACE  = q{ };
-my $FEED_URL       = 'http://www.jaist.ac.jp/cafe/feed/';
-my $FIRST_ITEM_NUM = 0;
+my $MENU_DIR         = './menu/';
+my $CACHE_DIR        = './cache/';
+my $HANKAKU_SPACE    = q{ };
+my $FEED_URL         = 'http://www.jaist.ac.jp/cafe/feed/';
+my $FIRST_ITEM_NUM   = 0;
+my $TWEET_MAX_STRLEN = 140;
 
 my $config = pit_get('JAIST_GOHAN', require => {
     'consumer_key'        => 'Input consumer_key',
@@ -56,7 +59,7 @@ ${mday}日（${wday}）のメニュー▼
 オリジナル：$original_plate
 EOS
 
-    $twit->update($menu);
+    tweet($menu);
 }
 
 warn 'フィードのチェックに失敗しました' if check_feed() == -1;
@@ -114,12 +117,12 @@ sub check_feed
 {
     my $cache = "${CACHE_DIR}feed.xml";
 
-    my $cache_last_update = (stat($cache))[9];
+    my $cache_last_update = (stat($cache))[9] // 0;
 
     # もし新しければ上書きされる
     LWP::Simple::mirror($FEED_URL, $cache) or return -1;
 
-    my $feed_last_update = (stat($cache))[9];
+    my $feed_last_update = (stat($cache))[9] // 0;
 
     ### $cache_last_update
     ### $feed_last_update
@@ -130,14 +133,24 @@ sub check_feed
         my $feed = XML::FeedPP->new($cache);
         my $item = $feed->get_item($FIRST_ITEM_NUM); # 短時間（１日以内）に複数回更新されない想定なのに注意
 
-        my $title =  $item->title;
-        my $desc  =  $item->description;
-        my $link  =  $item->link;
+        my $title =  decode_utf8 $item->title;
+        my $desc  =  decode_utf8 $item->description;
+        my $link  =  decode_utf8 $item->link;
 
         my $feed_info = <<"EOS";
 【JAIST Cafeteria】「${title}」${desc} $link
 EOS
 
-        $twit->update($feed_info);
+        tweet($feed_info);
     }
+}
+
+
+sub tweet
+{
+    my ($text) = @_;
+
+    $text = truncstr($text, $TWEET_MAX_STRLEN);
+
+    $twit->update($text);
 }
