@@ -11,10 +11,12 @@ use Config::Pit;
 use Time::Piece;
 use IO::All -utf8;
 use Digest::MD5 qw/md5_hex/;
-use LWP::Simple qw/mirror/;
+use LWP::Simple qw/mirror get/;
 use XML::FeedPP;
 use Text::Truncate;
 use Encode qw/decode_utf8 encode_utf8/;
+use JSON;
+use URI::Escape::XS qw/uri_escape/;
 use open qw/:utf8 :std/;
 
 
@@ -24,12 +26,15 @@ my $HANKAKU_SPACE    = q{ };
 my $FEED_URL         = 'http://www.jaist.ac.jp/cafe/feed/';
 my $FIRST_ITEM_NUM   = 0;
 my $TWEET_MAX_STRLEN = 140;
+my $BITLY_BASE_URL   = 'http://api.bit.ly/v3/shorten';
 
 my $config = pit_get('JAIST_GOHAN', require => {
     'consumer_key'        => 'Input consumer_key',
     'consumer_secret'     => 'Input consumer_secret',
     'access_token'        => 'Input access_token',
     'access_token_secret' => 'Input access_token_secret',
+    'bitly_user'          => 'Input bitly_user',
+    'bitly_key'           => 'Input bitly_key',
 });
 
 my $twit = Net::Twitter::Lite::WithAPIv1_1->new(
@@ -41,7 +46,7 @@ my $twit = Net::Twitter::Lite::WithAPIv1_1->new(
 );
 
 
-#$twit->updat e('Hello, World!');
+#$twit->update('Hello, World!');
 
 my ($mday, $wday, $lunchA, $lunchB, $lunchC, $dinnerA, $dinnerB, $higawari_men, $original_plate)
     = fetch_menu();
@@ -137,10 +142,23 @@ sub check_feed
         my $desc  =  decode_utf8 $item->description;
         my $link  =  decode_utf8 $item->link;
 
+        if ($desc =~ /(http:[^\s]+\.pdf)/)
+        {
+            my $url = shorten_URL($1);
+            $desc =~ s/http:[^\s]+\.pdf/$url/;
+        }
+
+        $link = shorten_URL($link);
+
+        ### $title
+        ### $desc
+        ### $link
+
         my $feed_info = <<"EOS";
 【JAIST Cafeteria】「${title}」${desc} $link
 EOS
 
+        ### $feed_info
         tweet($feed_info);
     }
 }
@@ -153,4 +171,17 @@ sub tweet
     $text = truncstr($text, $TWEET_MAX_STRLEN);
 
     $twit->update($text);
+}
+
+
+sub shorten_URL
+{
+    my $url      = uri_escape(shift);
+    my $apiurl   = "${BITLY_BASE_URL}?login=%s&apiKey=%s&longUrl=%s&format=json";
+    my $bitly    = sprintf($apiurl, $config->{bitly_user}, $config->{bitly_key}, $url);
+    my $json     = LWP::Simple::get($bitly);
+    my $res      = decode_json($json);
+    my $shortURL = $res->{data}{url};
+
+    return $shortURL;
 }
