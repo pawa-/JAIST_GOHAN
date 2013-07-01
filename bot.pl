@@ -9,8 +9,8 @@ use feature qw/say/;
 use Net::Twitter::Lite::WithAPIv1_1;
 use Config::Pit;
 use Time::Piece;
+use Time::Seconds;
 use IO::All -utf8;
-use Digest::MD5 qw/md5_hex/;
 use LWP::Simple qw/mirror get/;
 use XML::FeedPP;
 use Text::Truncate;
@@ -20,13 +20,16 @@ use URI::Escape::XS qw/uri_escape/;
 use open qw/:utf8 :std/;
 
 
-my $MENU_DIR         = './menu/';
-my $CACHE_DIR        = './cache/';
-my $HANKAKU_SPACE    = q{ };
-my $FEED_URL         = 'http://www.jaist.ac.jp/cafe/feed/';
-my $FIRST_ITEM_NUM   = 0;
-my $TWEET_MAX_STRLEN = 140;
-my $BITLY_BASE_URL   = 'http://api.bit.ly/v3/shorten';
+my $MENU_DIR            = './menu/';
+my $CACHE_DIR           = './cache/';
+my $HANKAKU_SPACE       = q{ };
+my $FEED_URL            = 'http://www.jaist.ac.jp/cafe/feed/';
+my $FEED_FIRST_ITEM_NUM = 0;
+my $NUM_MENU_COLUMN     = 9;
+my $LUNCH_END_HOUR      = 14;
+my $DINNER_END_HOUR     = 20;
+my $TWEET_MAX_STRLEN    = 140;
+my $BITLY_BASE_URL      = 'http://api.bit.ly/v3/shorten';
 
 my $config = pit_get('JAIST_GOHAN', require => {
     'consumer_key'        => 'Input consumer_key',
@@ -46,25 +49,23 @@ my $twit = Net::Twitter::Lite::WithAPIv1_1->new(
 );
 
 
-#$twit->update('Hello, World!');
+my $t    = localtime;
+my $hour = $t->hour;
 
-my ($mday, $wday, $lunchA, $lunchB, $lunchC, $dinnerA, $dinnerB, $higawari_men, $original_plate)
-    = fetch_menu();
-
-if ($mday != -1)
+if ($t->hour < $DINNER_END_HOUR)
 {
-    my $menu = <<"EOS";
-${mday}日（${wday}）のメニュー▼
-　ランチＡ：$lunchA
-　ランチＢ：$lunchB
-　ランチＣ：$lunchC
-ディナーＡ：$dinnerA
-ディナーＢ：$dinnerB
-日替わり麺：$higawari_men
-オリジナル：$original_plate
-EOS
+    my $today      = $t->ymd;
+    my $menu_today = fetch_menu($today, $hour);
 
-    tweet($menu);
+    tweet($menu_today);
+}
+else
+{
+    $t += ONE_DAY;
+    my $tomorrow      = $t->ymd;
+    my $menu_tomorrow = fetch_menu($tomorrow, 0);
+
+    tweet($menu_tomorrow);
 }
 
 warn 'フィードのチェックに失敗しました' if check_feed() == -1;
@@ -77,45 +78,59 @@ exit;
 
 sub fetch_menu
 {
-    my $t = localtime;
+    my ($ymd, $hour) = @_;
 
-    my ($year, $month) = ( $t->year, $t->strftime("%m") );
+    ### $ymd
 
-    # ↓は本番ではコメントアウト
-    #$month = '05';
-    ### $year
-    ### $month
+    my ($year, $month, $mday) = split(/-/, $ymd);
+    $mday =~ s/0([0-9])/$1/;
 
     my $menu_file = "${MENU_DIR}${year}/${month}.txt";
-    return -1 unless -f $menu_file;
+    return unless -f $menu_file;
 
     my $content = io($menu_file)->slurp;
     $content =~ s/\n\n+/\n/g;
     $content =~ s/\n[^0-9]//g;
 
-    # 4以下ならその日は食堂は休みと思われる
-    my @lines = grep { length > 4 } split(/\n/, $content);
+    my @lines = split(/\n/, $content);
 
     for my $line (@lines)
     {
-        chomp $line;
+        my @items = split(/$HANKAKU_SPACE/o, $line);
+
+        next if $items[0] ne $mday;
+        return "${month}月${mday}日の食堂は休みです。\n" if scalar @items < 3;
 
         my (
             $mday,    $wday,    $lunchA,       $lunchB,        $lunchC,
             $dinnerA, $dinnerB, $higawari_men, $original_plate
         )
-        = split(/$HANKAKU_SPACE/o, $line);
+        = map { length $_ ? $_ : 'なし' } @items[0 .. ($NUM_MENU_COLUMN - 1)];
 
-        for ( ($mday, $wday, $lunchA, $lunchB, $lunchC, $dinnerA, $dinnerB, $higawari_men, $original_plate) )
+        $month =~ s/0([0-9])/$1/;
+
+        my $menu = "${month}月${mday}日（${wday}）のメニュー▼\n";
+
+        if ($hour < $LUNCH_END_HOUR)
         {
-            $_ = 'なし' unless length $_;
+            $menu .= <<"EOS";
+　ランチＡ：$lunchA
+　ランチＢ：$lunchB
+　ランチＣ：$lunchC
+EOS
         }
 
-        if ($t->mday eq $mday)
-        {
-            return ($mday, $wday, $lunchA, $lunchB, $lunchC, $dinnerA, $dinnerB, $higawari_men, $original_plate);
-        }
+        $menu .= <<"EOS";
+ディナーＡ：$dinnerA
+ディナーＢ：$dinnerB
+日替わり麺：$higawari_men
+オリジナル：$original_plate
+EOS
+
+        return $menu;
     }
+
+    return 'なんかえらー';
 }
 
 
@@ -137,7 +152,7 @@ sub check_feed
     {
         # フィードが更新されている
         my $feed = XML::FeedPP->new($cache);
-        my $item = $feed->get_item($FIRST_ITEM_NUM); # 短時間（１日以内）に複数回更新されない想定なのに注意
+        my $item = $feed->get_item($FEED_FIRST_ITEM_NUM); # 短時間（１日以内）に複数回更新されない想定なのに注意
 
         my $title = decode_utf8 $item->title;
         my $desc  = decode_utf8 $item->description;
