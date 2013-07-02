@@ -57,7 +57,7 @@ if ($t->hour < $DINNER_END_HOUR)
     my $today      = $t->ymd;
     my $menu_today = fetch_menu($today, $hour);
 
-    tweet($menu_today) if defined $menu_today;
+    tweet('本日' . $menu_today) if defined $menu_today;
 }
 else
 {
@@ -65,7 +65,7 @@ else
     my $tomorrow      = $t->ymd;
     my $menu_tomorrow = fetch_menu($tomorrow, 0);
 
-    tweet($menu_tomorrow) if defined $menu_tomorrow;
+    tweet('明日' . $menu_tomorrow) if defined $menu_tomorrow;
 }
 
 warn 'フィードのチェックに失敗しました' if check_feed() == -1;
