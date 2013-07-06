@@ -88,6 +88,8 @@ sub fetch_menu
     my $menu_file = "${MENU_DIR}${year}/${month}.txt";
     return unless -f $menu_file;
 
+    $month =~ s/0([0-9])/$1/;
+
     my $content = io($menu_file)->slurp;
     $content =~ s/\n\n+/\n/g;
     $content =~ s/\n[^0-9]//g;
@@ -106,8 +108,6 @@ sub fetch_menu
             $dinnerA, $dinnerB, $higawari_men, $original_plate
         )
         = map { length $_ ? $_ : 'なし' } @items[0 .. ($NUM_MENU_COLUMN - 1)];
-
-        $month =~ s/0([0-9])/$1/;
 
         my $menu = "${month}月${mday}日（${wday}）のメニュー▼\n";
 
