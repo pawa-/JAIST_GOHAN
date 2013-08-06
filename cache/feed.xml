@@ -13,11 +13,47 @@
 	<atom:link href="http://www.jaist.ac.jp/cafe/feed/" rel="self" type="application/rss+xml" />
 	<link>http://www.jaist.ac.jp/cafe</link>
 	<description></description>
-	<lastBuildDate>Tue, 30 Apr 2013 02:51:14 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 31 Jul 2013 01:34:37 +0000</lastBuildDate>
 	<language>ja</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>http://wordpress.org/?v=3.2</generator>
+		<item>
+		<title>８月のメニュー</title>
+		<link>http://www.jaist.ac.jp/cafe/2013/07/31/?p=1097/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2013/07/31/?p=1097/#comments</comments>
+		<pubDate>Wed, 31 Jul 2013 01:34:37 +0000</pubDate>
+		<dc:creator>cafe</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1097</guid>
+		<description><![CDATA[  ８月のメニューです☆ http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/07/２５．８メニュー掲示用.pdf ８月１３日から１７日まで休業とさせていただきます。　　　 &#160; &#160;]]></description>
+			<content:encoded><![CDATA[<p>  ８月のメニューです☆</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/07/２５．８メニュー掲示用.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/07/２５．８メニュー掲示用.pdf</a></p>
+<p>８月１３日から１７日まで休業とさせていただきます。　　　</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2013/07/31/?p=1097/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>７月メニュー☆</title>
+		<link>http://www.jaist.ac.jp/cafe/2013/07/01/?p=1093/</link>
+		<comments>http://www.jaist.ac.jp/cafe/2013/07/01/?p=1093/#comments</comments>
+		<pubDate>Mon, 01 Jul 2013 00:44:34 +0000</pubDate>
+		<dc:creator>cafe</dc:creator>
+				<category><![CDATA[メニュー]]></category>
+
+		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1093</guid>
+		<description><![CDATA[７月のメニューです！！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/07/２５．７メニュー掲示用.pdf &#160;]]></description>
+			<content:encoded><![CDATA[<p>７月のメニューです！！</p>
+<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/07/２５．７メニュー掲示用.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2013/07/２５．７メニュー掲示用.pdf</a></p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2013/07/01/?p=1093/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
 		<item>
 		<title>５月のメニュー</title>
 		<link>http://www.jaist.ac.jp/cafe/2013/04/30/?p=1086/</link>
@@ -144,38 +180,6 @@
 <p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/10/10月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/10/10月メニュー.pdf</a></p>
 ]]></content:encoded>
 			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/10/02/?p=1032/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title>9月のメニュー</title>
-		<link>http://www.jaist.ac.jp/cafe/2012/08/27/?p=1026/</link>
-		<comments>http://www.jaist.ac.jp/cafe/2012/08/27/?p=1026/#comments</comments>
-		<pubDate>Mon, 27 Aug 2012 07:26:36 +0000</pubDate>
-		<dc:creator>admin</dc:creator>
-				<category><![CDATA[メニュー]]></category>
-
-		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1026</guid>
-		<description><![CDATA[９月のメニューを掲載しました！ http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/08/9月メニュー.pdf]]></description>
-			<content:encoded><![CDATA[<p>９月のメニューを掲載しました！</p>
-<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/08/9月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/08/9月メニュー.pdf</a></p>
-]]></content:encoded>
-			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/08/27/?p=1026/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-		</item>
-		<item>
-		<title></title>
-		<link>http://www.jaist.ac.jp/cafe/2012/07/30/?p=1020/</link>
-		<comments>http://www.jaist.ac.jp/cafe/2012/07/30/?p=1020/#comments</comments>
-		<pubDate>Mon, 30 Jul 2012 00:25:01 +0000</pubDate>
-		<dc:creator>admin</dc:creator>
-				<category><![CDATA[メニュー]]></category>
-
-		<guid isPermaLink="false">http://www.jaist.ac.jp/cafe/?p=1020</guid>
-		<description><![CDATA[8月のメニューを掲載しました。 http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/07/8月メニュー.pdf]]></description>
-			<content:encoded><![CDATA[<p>8月のメニューを掲載しました。</p>
-<p><a href="http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/07/8月メニュー.pdf">http://www.jaist.ac.jp/cafe/wp-content/uploads/2012/07/8月メニュー.pdf</a></p>
-]]></content:encoded>
-			<wfw:commentRss>http://www.jaist.ac.jp/cafe/2012/07/30/?p=1020/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 	</channel>
