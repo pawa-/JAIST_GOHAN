@@ -25,7 +25,8 @@ my $CACHE_DIR           = './cache/';
 my $HANKAKU_SPACE       = q{ };
 my $FEED_URL            = 'http://www.jaist.ac.jp/cafe/feed/';
 my $FEED_FIRST_ITEM_NUM = 0;
-my $NUM_MENU_COLUMN     = 9;
+#my $NUM_MENU_COLUMN     = 9; # 2013/08 からディナーBが消滅
+my $NUM_MENU_COLUMN     = 8;
 my $LUNCH_END_HOUR      = 14;
 my $DINNER_END_HOUR     = 20;
 my $TWEET_MAX_STRLEN    = 140;
@@ -103,9 +104,14 @@ sub fetch_menu
         next if $items[0] ne $mday;
         return "${month}月${mday}日の食堂は休みです。\n" if scalar @items < 3;
 
+        # dinnerB がなくなったため
+        #my (
+        #    $mday,    $wday,    $lunchA,       $lunchB,        $lunchC,
+        #    $dinnerA, $dinnerB, $higawari_men, $original_plate
+        #)
         my (
             $mday,    $wday,    $lunchA,       $lunchB,        $lunchC,
-            $dinnerA, $dinnerB, $higawari_men, $original_plate
+            $dinnerA, $higawari_men, $original_plate
         )
         = map { length $_ ? $_ : 'なし' } @items[0 .. ($NUM_MENU_COLUMN - 1)];
 
@@ -122,7 +128,6 @@ EOS
 
         $menu .= <<"EOS";
 ディナーＡ：$dinnerA
-ディナーＢ：$dinnerB
 日替わり麺：$higawari_men
 オリジナル：$original_plate
 EOS
